@@ -30,9 +30,9 @@ Documentation:
 Screenshots
 -----------
 
-.. image:: https://github.com/physics-is-beautiful/django-react-djeddit/blob/master/media/drc1.png?raw=true
+.. image:: https://github.com/physics-is-beautiful/react-comments-django/blob/master/media/drc1.png?raw=true
 
-.. image:: https://github.com/physics-is-beautiful/django-react-djeddit/blob/master/media/drc2.png?raw=true
+.. image:: https://github.com/physics-is-beautiful/react-comments-django/blob/master/media/drc2.png?raw=true
 
 Supported Django versions
 -------------------------
@@ -65,15 +65,16 @@ react_comments_django_settings to context_processors:
 
     'context_processors': [
         ...
-        'react_comments_django.context_processors.djeddit_settings',
+        'react_comments_django.context_processors.react_comments_django_settings',
         ...
     ]
 
-Django-djeddit's URL patterns:
+react_comments_django's URL patterns:
 
 .. code-block:: python
 
     from react_comments_django.sitemaps import ThreadSitemap
+    from react_comments_django.urls_api import urlpatterns as react_comments_django_urls_api
 
     sitemaps = {
         'react_comments_django': ThreadSitemap
@@ -81,7 +82,7 @@ Django-djeddit's URL patterns:
 
     urlpatterns = [
         ...
-        url(r'^api/v1/', include(djeddit_urls_api)),
+        url(r'^api/v1/', include(react_comments_django_urls_api)),
         url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
         ...
     ]
