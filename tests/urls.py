@@ -14,7 +14,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from django.views.generic.base import RedirectView
 
-from djeddit.sitemaps import ThreadSitemap
+from react_comments_django.sitemaps import ThreadSitemap
 
 sitemaps = {
     'djeddit': ThreadSitemap

@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     # project apps
-    'backend',
+    'react_comments_django',
     'django_filters'
 ]
 
@@ -55,12 +55,12 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # os.path.join(BASE_DIR, 'backend', 'templates'),
-            os.path.join(BASE_DIR, 'frontend', 'build')]
+            os.path.join(BASE_DIR, 'frontend', 'build')] # TODO it should be configurable
         ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'backend.context_processors.djeddit_settings',
+                'backend.context_processors.react_comments_django_settings'
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -87,8 +87,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend', 'build')]
 # CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # django-djeddit config:
-DJEDDIT_BASE_TEMPLATE = "react-comments-django/react_index.html"
-DJEDDIT_USE_INTERNAL_USER = True
+REACT_COMMENTS_DJANGO_BASE_TEMPLATE = "react-comments-django/react_index.html"
+REACT_COMMENTS_DJANGO_USE_INTERNAL_USER = True
 
 # email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

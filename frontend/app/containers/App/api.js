@@ -3,7 +3,7 @@ import { API_PREFIX } from '../../utils/constants'
 import request from '../../utils/request'
 
 function getSignedInUser() {
-  const conf = window.DJEDDIT_CONFIG
+  const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 
   let API_PROFILE_URL = `${API_PREFIX}users/me/`
 

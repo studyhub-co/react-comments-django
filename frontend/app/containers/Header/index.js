@@ -29,7 +29,7 @@ import { useInjectSaga } from '../../utils/injectSaga'
 import saga from '../App/saga'
 import { TOPIC_URL_MASK } from '../App/urls'
 
-const conf = window.DJEDDIT_CONFIG
+const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 let EMBEDDED_MODE = false
 if (conf) {
   ;({ EMBEDDED_MODE } = conf)
@@ -113,7 +113,7 @@ const Header = ({ intl, location, signedInUser }) => {
     <div>
       {!EMBEDDED_MODE && (
         <A href="/">
-          <Img src={Banner} alt="django-react-djeddit-client - Logo" />
+          <Img src={Banner} alt="react-commenyts-django-client - Logo" />
         </A>
       )}
       <Navbar>

@@ -1,59 +1,38 @@
+.. |ss| raw:: html
+
+   <strike>
+
+.. |se| raw:: html
+
+   </strike>
+
 =============================
 react-comments-django
 =============================
 
 Forum and comments application
 
-* Django Rest Framework api included
+* Django Rest Framework API
 * React application as frontend included
 * MathJax support
-* Embed Thread component
-
-.. image:: https://github.com/physics-is-beautiful/django-react-djeddit/blob/master/media/drc1.png?raw=true
-.. image:: https://github.com/physics-is-beautiful/django-react-djeddit/blob/master/media/drc2.png?raw=true
-
-=============================
-django-djeddit
-=============================
-
-.. image:: https://badge.fury.io/py/django-djeddit.svg
-    :target: https://badge.fury.io/py/django-djeddit
-
-.. image:: https://travis-ci.org/EatEmAll/django-djeddit.svg?branch=master
-    :target: https://travis-ci.org/EatEmAll/django-djeddit
-
-.. image:: https://codecov.io/gh/EatEmAll/django-djeddit/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/EatEmAll/django-djeddit
-
-.. image:: https://img.shields.io/badge/python-2.7%2C%203.4%2C%203.5%2C%203.6-blue.svg
-   :target: https://travis-ci.org/EatEmAll/django-djeddit
-
-.. image:: https://img.shields.io/badge/django%20versions-1.8%2C%201.9%2C%201.10%2C%201.11%2C%202.0-blue.svg
-   :target: https://travis-ci.org/EatEmAll/django-djeddit
-
-Bare bones Django forum application with Reddit like features developed as a Django reusable app.
-
-* comments are ranked using wilson scoring interval and displayed in a collapsable tree structure (using `django-mptt <https://github.com/django-mptt/django-mptt>`_)
-* voting functionality for threads & comments
-* compatible with mobile screen sizes (using `Bootstrap <https://github.com/twbs/bootstrap>`_)
-* users management page for admins
-* admins can lock/unlock, edit, delete threads and posts, edit & delete topics
+* Embed Thread component (reactjs + react-bootstrap)
+* Comments are ranked using wilson scoring interval and displayed in a tree structure (using `django-mptt <https://github.com/django-mptt/django-mptt>`_)
+* Voting functionality for threads & comments
+* Compatible with mobile screen sizes
+* |ss| Users management page for admins |se|
+* |ss| Admins can lock/unlock, edit, delete threads and posts, edit & delete topics |se|
 
 
-`django-registration-redux <https://github.com/macropin/django-registration>`_ is recommanded to go along with this app if you need out of the box user registration functionality.
+Working demo:
 
-Working demo: http://eatemall.pythonanywhere.com
-
-Documentation: https://django-djeddit.readthedocs.io.
+Documentation:
 
 Screenshots
 -----------
 
-.. image:: https://raw.githubusercontent.com/EatEmAll/django-djeddit/master/media/Threads.jpg
+.. image:: https://github.com/physics-is-beautiful/django-react-djeddit/blob/master/media/drc1.png?raw=true
 
-.. image:: https://raw.githubusercontent.com/EatEmAll/django-djeddit/master/media/User.jpg
-
-.. image:: https://raw.githubusercontent.com/EatEmAll/django-djeddit/master/media/Comments.jpg
+.. image:: https://github.com/physics-is-beautiful/django-react-djeddit/blob/master/media/drc2.png?raw=true
 
 Supported Django versions
 -------------------------
@@ -63,9 +42,9 @@ The app is currently tested with Django 1.8, 1.9, 1.10 and 1.11, 2.0
 Quickstart
 ----------
 
-Install django-djeddit::
+Install react-comments-django::
 
-    pip install django-djeddit
+    pip install react-comments-django
 
 Add it and its dependencies to your `INSTALLED_APPS`:
 
@@ -75,28 +54,35 @@ Add it and its dependencies to your `INSTALLED_APPS`:
         ...
         'crispy_forms',
         'mptt',
-        'djeddit',
+        'react_comments_django',
         'meta',
         ...
         ]
 
-djeddit_settings to context_processors:
+react_comments_django_settings to context_processors:
 
 .. code-block:: python
 
     'context_processors': [
         ...
-        'djeddit.context_processors.djeddit_settings',
+        'react_comments_django.context_processors.djeddit_settings',
         ...
     ]
 
-jango-djeddit's URL patterns:
+Django-djeddit's URL patterns:
 
 .. code-block:: python
 
+    from react_comments_django.sitemaps import ThreadSitemap
+
+    sitemaps = {
+        'react_comments_django': ThreadSitemap
+    }
+
     urlpatterns = [
         ...
-        url(r'^', include('djeddit.urls')),
+        url(r'^api/v1/', include(djeddit_urls_api)),
+        url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
         ...
     ]
 
@@ -104,7 +90,7 @@ Migrate models:
 
 .. code-block:: python
 
-    python manage.py migrate djeddit
+    python manage.py migrate react_comments_django
 
 
 Create a topic:
@@ -113,7 +99,7 @@ You can use New Topic dialog in topics page if you're logged in as a superuser o
 
 .. code-block:: python
 
-    from djeddit.models import Topic
+    from react_comments_django.models import Topic
     Topic.objects.create(title='Test Topic')
 
 
@@ -131,11 +117,3 @@ Dependencies:
 .. _crispy_forms: https://github.com/django-crispy-forms/django-crispy-forms
 .. _django-meta: https://github.com/nephila/django-meta
 .. _django-ipware: https://github.com/un33k/django-ipware
-
-Tools used in rendering this package:
-
-*  Cookiecutter_
-*  `cookiecutter-djangopackage`_
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`cookiecutter-djangopackage`: https://github.com/pydanny/cookiecutter-djangopackage
