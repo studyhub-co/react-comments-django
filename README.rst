@@ -52,10 +52,8 @@ Add it and its dependencies to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = [
         ...
-        'crispy_forms',
         'mptt',
         'react_comments_django',
-        'meta',
         ...
         ]
 
@@ -110,11 +108,7 @@ Credits
 Dependencies:
 
 *  django-mptt_
-*  crispy_forms_
-*  django-meta_
 *  django-ipware_
 
 .. _django-mptt: https://github.com/django-mptt/django-mptt
-.. _crispy_forms: https://github.com/django-crispy-forms/django-crispy-forms
-.. _django-meta: https://github.com/nephila/django-meta
 .. _django-ipware: https://github.com/un33k/django-ipware
