@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django_filters'
 ]
 
-MIDDLEWARE_CLASSES = [
+_MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -46,7 +46,9 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 if django.VERSION >= (1, 10):
-    MIDDLEWARE = MIDDLEWARE_CLASSES
+    MIDDLEWARE = _MIDDLEWARE_CLASSES
+else:
+    MIDDLEWARE_CLASSES = _MIDDLEWARE_CLASSES
 
 ROOT_URLCONF = "tests.urls"
 
@@ -60,7 +62,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'backend.context_processors.react_comments_django_settings'
+                'react_comments_django.context_processors.react_comments_django_settings',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

@@ -152,7 +152,5 @@ class TopicsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Topic
-        fields = ['title', 'slug', 'description', 'threads_counter']
-
-
-
+        fields = ['title', 'description', 'threads_counter', 'slug']
+        read_only_fields = ('slug',)

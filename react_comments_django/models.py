@@ -4,20 +4,14 @@ from django import VERSION as DJANGO_VERSION
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
 from django.core.validators import RegexValidator
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.db import models
-if DJANGO_VERSION[:2] < (1, 10):
-    from django.core.urlresolvers import reverse
-else:
-    from django.urls import reverse
 
 # Third party imports
 from mptt.models import MPTTModel, TreeForeignKey
-from slugify import slugify
 # we can use following for this
-# from django.template.defaultfilters import slugify
+from django.utils.text import slugify
 from ipware.ip import get_ip
 
 # Our app imports
@@ -39,20 +33,16 @@ class NamedModel(models.Model):
     class Meta:
         abstract = True
 
-    def getName(self):
+    def get_name(self):
         return self.__class__.__name__
 
 
 @python_2_unicode_compatible
 class Topic(NamedModel):
-    alphanumeric = RegexValidator(r'^[0-9a-zA-Z ]*$', 'Only alphanumeric characters are allowed.')
-
-    # title = models.CharField(max_length=30, blank=False, unique=True, validators=[alphanumeric])
     # it can be ungiue by titles, but not with urlTitle, example:
     # urlTitle("About page") -> "about-page" and urlTitle("About-page") -> "about-page"
-
     slug = models.SlugField(unique=True, null=True, max_length=200)
-    title = models.CharField(max_length=30, blank=False, validators=[alphanumeric])
+    title = models.CharField(max_length=50, blank=False)
     description = models.CharField(max_length=120, blank=True, default='')
 
     def __str__(self):
@@ -66,9 +56,9 @@ class Topic(NamedModel):
     def gen_slug(title, try_count=0, unique=True):
 
         if try_count != 0:
-            slug = slugify("{} {}".format(title, try_count), to_lower=True, max_length=180)
+            slug = slugify("{} {}".format(title, try_count))[:180]
         else:
-            slug = slugify(title, to_lower=True, max_length=180)
+            slug = slugify(title)[:180]
 
         if not unique:
             return slug
@@ -83,37 +73,22 @@ class Topic(NamedModel):
         return Topic.gen_slug(title, try_count)
 
     @property
-    def urlTitle(self):
-        # return self.title.replace(' ', '-').lower()
+    def url_title(self):
         return self.slug
 
-    def get_absolute_url(self):
-        return reverse('topicPage', args=[self.urlTitle])
-
     @staticmethod
-    def getTopic(title):
+    def get_topic(title):
         return Topic.objects.get(slug=title)
-
-        # following is very ugly code
-        # try:
-        #     return Topic.objects.get(title=title)
-        # except ObjectDoesNotExist:
-        #     try:
-        #         return Topic.objects.get(title=title.replace('-', ' '))
-        #     except ObjectDoesNotExist:
-        #         return Topic.objects.get(title=title.replace('_', ' ')))
 
 
 @python_2_unicode_compatible
 class Thread(NamedModel):
     title = models.CharField(max_length=200, blank=False)
-    # Not necessary slug
     slug = models.SlugField(unique=False, max_length=200)
     url = models.URLField(max_length=120, blank=True, default='')
     views = models.IntegerField(blank=True, default=0)
-    # topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     topic = models.ForeignKey(Topic, related_name='thread', on_delete=models.CASCADE)
-    # op - this is first Post in thread
+    # op - first Post in thread
     op = models.ForeignKey('Post', related_name='+', on_delete=models.CASCADE)
     locked = models.BooleanField(blank=True, default=False)
     is_stickied = models.BooleanField(default=False)
@@ -122,13 +97,12 @@ class Thread(NamedModel):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = self._genSlug()
+        self.slug = self.gen_slug(self.title)
         super(Thread, self).save(*args, **kwargs)
 
-    # TODO Not correct function, see Topic.gen_slug
-    def _genSlug(self):
-        slug = slugify(self.title, to_lower=True, max_length=180)
-        return slug
+    @staticmethod
+    def gen_slug(title):
+        return slugify(title)[:180]
 
     def delete(self, *args, **kwargs):
         try:
@@ -136,13 +110,6 @@ class Thread(NamedModel):
         except Post.DoesNotExist:
             pass
         super(Thread, self).delete(*args, **kwargs)
-
-    @property
-    def relativeUrl(self):
-        return reverse('threadPage', args=[self.topic.urlTitle, self.id, self.slug])
-
-    def get_absolute_url(self):
-        return self.relativeUrl
 
 
 @python_2_unicode_compatible
@@ -156,29 +123,28 @@ class Post(MPTTModel, NamedModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True, on_delete=models.CASCADE)
     _upvotes = models.IntegerField(blank=True, default=0)
     _downvotes = models.IntegerField(blank=True, default=0)
-    wsi = models.FloatField(blank=True, default=0) # Wilson score interval
+    wsi = models.FloatField(blank=True, default=0)  # Wilson score interval
     ip_address = models.GenericIPAddressField(blank=True, null=True)
     user_agent = models.CharField(max_length=150, blank=True, null=True)
-    # count_all_replies = models.IntegerField(blank=True, default=0)  # count all replies for all descendants
 
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)
-        Post.upvotes = property(lambda self: self._upvotes, Post._voteSetterWrapper('_upvotes'))
-        Post.downvotes = property(lambda self: self._downvotes, Post._voteSetterWrapper('_downvotes'))
-        self._repliesCache = None
+        # TODO not so good code / check that wsi saved
+        Post.upvotes = property(lambda self: self._upvotes, Post.vote_setter_wrapper('_upvotes'))
+        Post.downvotes = property(lambda self: self._downvotes, Post.vote_setter_wrapper('_downvotes'))
 
     class MPTTMetta:
         order_insertion_by = ['created_on']
 
-    def __str__(self):
-        return self.content[:70]
-
     @staticmethod
-    def _voteSetterWrapper(attr):
-        def voteSetter(self, value):
+    def vote_setter_wrapper(attr):
+        def vote_setter(self, value):
             setattr(self, attr, max(0, value))
             self.wsi = wsi_confidence(self._upvotes, self._downvotes)
-        return voteSetter
+        return vote_setter
+
+    def __str__(self):
+        return self.content[:70]
 
     @property
     def thread(self):  # TODO: thread should be stored in Post
@@ -194,68 +160,8 @@ class Post(MPTTModel, NamedModel):
     def score(self):
         return self.upvotes - self.downvotes
 
-    def getReplies(self, excluded=()):
-        # TODO this code generate too many SQL queries
-        """:param excluded: exclude all posts with these uids and their descendants"""
-        replies = Post.objects.filter(parent=self.uid).exclude(uid__in=excluded)
-        if not self._repliesCache:
-            for reply in replies:
-                replies |= reply.getReplies(excluded=excluded)
-        self._repliesCache = replies
-        return replies
-
-    def getSortedReplies(self, limit=50, by_wsi=True, excluded=()):
-        """
-        :param limit: number of replies to return
-        :param by_wsi: sort replies by wsi score or by creation date
-        :param excluded: uids or excluded replies
-        """
-        excluded = list(excluded)
-        order_field = '-wsi' if by_wsi else 'created_on'
-        replies = list(self.getReplies(excluded=excluded).order_by(order_field)[:limit])
-        self._getPostsWithChildren(replies)
-        sorted_replies = []
-        for p in replies:
-            sorted_replies.append(p)
-            sorted_replies += p.getChildrenList()
-        return sorted_replies
-
-    def _getPostsWithChildren(self, replies):
-        # TODO replace with django mptt model functions
-        for p in list(replies):
-            if not hasattr(p, 'included_children'):
-                p.included_children = []
-            if p.parent != self:
-                if p.parent not in replies:
-                    # add missing parents
-                    current_p = p
-                    while True:
-                        current_p.parent._addToIncludedChildren(current_p)
-                        current_p = current_p.parent
-                        if current_p in (replies + [self]):
-                            break
-                    if current_p in replies:
-                        replies[replies.index(current_p)] = current_p
-                else:
-                    p.parent = replies[replies.index(p.parent)]
-                    p.parent._addToIncludedChildren(p)
-                replies.remove(p)
-
-    def _addToIncludedChildren(self, post):
-        if not hasattr(self, 'included_children'):
-            self.included_children = [post]
-        else:
-            self.included_children.append(post)
-
-    def getChildrenList(self):
-        children = []
-        for p in self.included_children:
-            children.append(p)
-            if p.included_children:
-                children += p.getChildrenList()
-        return children
-
-    def setMeta(self, request):
+    # add to views
+    def set_meta(self, request):
         """update post ip_address & user_agent attributes"""
         ip = get_ip(request)
         if ip is not None:
