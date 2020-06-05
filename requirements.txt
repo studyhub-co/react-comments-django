@@ -1,4 +1,4 @@
-Django==1.11.28
+Django==1.11.29
 django-mptt>=0.8.7
 django-ipware>=2.1.0
 djangorestframework>=3.10.2
