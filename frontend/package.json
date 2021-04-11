@@ -1,6 +1,6 @@
 {
-  "name": "@pib/react-comments-django-client",
-  "version": "1.0.1",
+  "name": "@studyhub.co/react-comments-django-client",
+  "version": "1.0.0",
   "description": "react-comments-django client",
   "files": [
     "dist",
@@ -12,13 +12,13 @@
   "jsnext:main": "lib/index.es.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/physics-is-beautiful/django-react-djeddit.git"
+    "url": "git://github.com/studyhub-co/react-comments-django.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "Physics is beautiful",
+  "author": "Studyhub (https://studyhub.co)",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
