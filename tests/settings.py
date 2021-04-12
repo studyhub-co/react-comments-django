@@ -88,7 +88,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend', 'build')]
 # django-crispy-forms config:
 # CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-# django-djeddit config:
+# django config:
 REACT_COMMENTS_DJANGO_BASE_TEMPLATE = "react-comments-django/react_index.html"
 REACT_COMMENTS_DJANGO_USE_INTERNAL_USER = True
 

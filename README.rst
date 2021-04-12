@@ -1,11 +1,3 @@
-.. |ss| raw:: html
-
-   <strike>
-
-.. |se| raw:: html
-
-   </strike>
-
 =============================
 react-comments-django
 =============================
@@ -13,26 +5,23 @@ react-comments-django
 Forum and comments application
 
 * Django Rest Framework API
-* React application as frontend included
+* React application as frontend included (only in github version for now)
 * MathJax support
-* Embed Thread component (reactjs + react-bootstrap)
+* Embed Thread component and ThreadListComponent (reactjs + react-bootstrap) (npm install @studyhub.co/react-comments-django-client)
 * Comments are ranked using wilson scoring interval and displayed in a tree structure (using `django-mptt <https://github.com/django-mptt/django-mptt>`_)
 * Voting functionality for threads & comments
 * Compatible with mobile screen sizes
-* |ss| Users management page for admins |se|
-* |ss| Admins can lock/unlock, edit, delete threads and posts, edit & delete topics |se|
-
-
-Working demo:
+* Users management page for admins (not implemented yet)
+* Admins can lock/unlock, edit, delete threads and posts, edit & delete topics (not implemented yet)
 
 Documentation:
 
 Screenshots
 -----------
 
-.. image:: https://github.com/physics-is-beautiful/react-comments-django/blob/master/media/drc1.png?raw=true
+.. image:: https://github.com/studyhub-co/react-comments-django/blob/master/media/drc1.png?raw=true
 
-.. image:: https://github.com/physics-is-beautiful/react-comments-django/blob/master/media/drc2.png?raw=true
+.. image:: https://github.com/studyhub-co/react-comments-django/blob/master/media/drc2.png?raw=true
 
 Supported Django versions
 -------------------------

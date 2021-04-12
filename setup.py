@@ -3,11 +3,15 @@
 import os
 import re
 import sys
+# from shutil import rmtree
 
 try:
-    from setuptools import setup
+    from setuptools import setup, Command
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, Command
+
+_here = os.path.dirname(__file__)
+about = {}  # type: ignore
 
 
 def get_version(*file_paths):
@@ -21,7 +25,7 @@ def get_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-version = '0.0.1'
+version = '1.0.0'
 
 
 if sys.argv[-1] == 'publish':
@@ -31,8 +35,10 @@ if sys.argv[-1] == 'publish':
     except ImportError:
         print('Wheel library missing. Please run "pip install wheel"')
         sys.exit()
-    os.system('python setup.py sdist upload')
-    os.system('python setup.py bdist_wheel upload')
+    os.system('python setup.py sdist bdist_wheel')
+    os.system('twine check dist/*')
+    os.system('twine upload dist/*')
+    # os.system('twine upload --repository-url https://test.pypi.org/legacy/ dist/*')
     sys.exit()
 
 if sys.argv[-1] == 'tag':
@@ -44,16 +50,57 @@ if sys.argv[-1] == 'tag':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
+
+# class UploadCommand(Command):
+#     """Support setup.py upload."""
+#
+#     description = "Build and publish the package."
+#     user_options = []  # type: ignore
+#
+#     @staticmethod
+#     def status(s):
+#         """Prints things in bold."""
+#         print("\033[1m{0}\033[0m".format(s))
+#
+#     def initialize_options(self):
+#         pass
+#
+#     def finalize_options(self):
+#         pass
+#
+#     def run(self):
+#         try:
+#             self.status("Removing previous builds…")
+#             rmtree(os.path.join(_here, "dist"))
+#         except OSError:
+#             pass
+#
+#         self.status("Building Source and Wheel (universal) distribution…")
+#         os.system("{0} setup.py sdist bdist_wheel --universal".format(sys.executable))
+#
+#         self.status("Checking packages")
+#         os.system("twine check dist/*")
+#
+#         self.status("Uploading the package to PyPI via Twine…")
+#         os.system("twine upload dist/*")
+#
+#         # self.status("Pushing git tags…")
+#         # os.system("git tag v{0}".format(about["__version__"]))
+#         # os.system("git push --tags")
+#
+#         sys.exit()
+
 setup(
     name='react-comments-django',
     version=version,
     description="""React Django forum/comments application with Reddit like features""",
     long_description=readme + '\n\n' + history,
-    author='Physics is beautiful',
+    long_description_content_type="text/x-rst",
+    author='studyhub.co',
     author_email='nscozzaro@gmail.com',
-    url='https://github.com/physics-is-beautiful/react-comments-django',
+    url='https://github.com/studyhub-co/react-comments-django',
     packages=[
-        'backend',
+        'react_comments_django',
     ],
     include_package_data=True,
     install_requires=["django-crispy-forms>=1.6.1",
@@ -81,4 +128,6 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
     ],
+    # # $ setup.py upload support.
+    # cmdclass={"upload": UploadCommand},
 )
