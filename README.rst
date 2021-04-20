@@ -35,7 +35,7 @@ Install react-comments-django::
 
     pip install react-comments-django
 
-Add it and its dependencies to your `INSTALLED_APPS`:
+Add it and it's dependencies to your `INSTALLED_APPS`:
 
 .. code-block:: python
 
@@ -45,6 +45,7 @@ Add it and its dependencies to your `INSTALLED_APPS`:
         'react_comments_django',
         ...
         ]
+
 
 react_comments_django_settings to context_processors:
 
