@@ -12,7 +12,7 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 # we can use following for this
 from django.utils.text import slugify
-from ipware.ip import get_ip
+from ipware.ip import get_client_ip
 
 # Our app imports
 from .utils.utility_funcs import gen_uuid, wsi_confidence
@@ -163,7 +163,7 @@ class Post(MPTTModel, NamedModel):
     # add to views
     def set_meta(self, request):
         """update post ip_address & user_agent attributes"""
-        ip = get_ip(request)
+        ip = get_client_ip(request)
         if ip is not None:
             self.ip_address = ip
         ua = request.META.get('HTTP_USER_AGENT', '')
