@@ -3,36 +3,36 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const HtmlWebpackChunkPrefixPlugin = require('html-webpack-chunk-prefix-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
-const OfflinePlugin = require('offline-plugin')
-const { HashedModuleIdsPlugin } = require('webpack')
+// const OfflinePlugin = require('offline-plugin')
+// const { HashedModuleIdsPlugin } = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
-class HtmlWebpackChunkPrefixPlugin {
-  constructor(options) {
-    this.options = options
-  }
-
-  apply(compiler) {
-    const SELF = this
-    compiler.hooks.compilation.tap(
-      'htmlWebpackChunkPrefixPlugin',
-      compilation => {
-        compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tapAsync(
-          'htmlWebpackChunkPrefixPlugin',
-          (htmlPluginData, callback) => {
-            const { assets } = htmlPluginData
-            const js = assets.js.map(item => SELF.options.prefix + item)
-            const css = assets.css.map(item => SELF.query.prefix + item)
-            assets.js = js
-            assets.css = css
-            callback()
-          },
-        )
-      },
-    )
-  }
-}
+// class HtmlWebpackChunkPrefixPlugin {
+//   constructor(options) {
+//     this.options = options
+//   }
+//
+//   apply(compiler) {
+//     const SELF = this
+//     compiler.hooks.compilation.tap(
+//       'htmlWebpackChunkPrefixPlugin',
+//       compilation => {
+//         compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tapAsync(
+//           'htmlWebpackChunkPrefixPlugin',
+//           (htmlPluginData, callback) => {
+//             const { assets } = htmlPluginData
+//             const js = assets.js.map(item => SELF.options.prefix + item)
+//             const css = assets.css.map(item => SELF.query.prefix + item)
+//             assets.js = js
+//             assets.css = css
+//             callback()
+//           },
+//         )
+//       },
+//     )
+//   }
+// }
 
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
@@ -57,6 +57,7 @@ module.exports = require('./webpack.base.babel')({
   },
 
   optimization: {
+    moduleIds: 'deterministic',
     minimize: true,
     minimizer: [
       new TerserPlugin({
@@ -73,8 +74,8 @@ module.exports = require('./webpack.base.babel')({
           },
         },
         parallel: true,
-        cache: true,
-        sourceMap: true,
+        // cache: true,
+        // sourceMap: true,
       }),
     ],
     nodeEnv: 'production',
@@ -194,11 +195,11 @@ module.exports = require('./webpack.base.babel')({
       ],
     }),
 
-    new HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
-      hashDigest: 'hex',
-      hashDigestLength: 20,
-    }),
+    // new HashedModuleIdsPlugin({
+    //   hashFunction: 'sha256',
+    //   hashDigest: 'hex',
+    //   hashDigestLength: 20,
+    // }),
   ],
 
   performance: {

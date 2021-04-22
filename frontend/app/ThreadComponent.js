@@ -74,7 +74,7 @@ const store = configureStore(initialState)
  * @returns {*}
  * @constructor
  */
-export function ThreadComponent({ threadId }) {
+function ThreadComponent({ threadId }) {
   return (
     <Provider store={store}>
       <ThreadPage threadId={threadId} />
@@ -86,3 +86,5 @@ ThreadComponent.propTypes = {
   threadId: PropTypes.number,
   anonAsUserObject: PropTypes.bool,
 }
+
+export default ThreadComponent

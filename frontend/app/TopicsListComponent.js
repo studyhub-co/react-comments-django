@@ -31,7 +31,7 @@ const store = configureStore(initialState)
  * @returns {*}
  * @constructor
  */
-export function TopicsListComponent() {
+function TopicsListComponent() {
   return (
     <Provider store={store}>
       <TopicsList />
@@ -42,3 +42,5 @@ export function TopicsListComponent() {
 TopicsListComponent.propTypes = {
   anonAsUserObject: PropTypes.bool,
 }
+
+export default TopicsListComponent

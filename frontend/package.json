@@ -1,11 +1,10 @@
 {
   "name": "@studyhub.co/react-comments-django-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react-comments-django client",
   "files": [
     "dist",
-    "lib",
-    "app"
+    "lib"
   ],
   "main": "lib/index.js",
   "module": "lib/index.es.js",
@@ -29,10 +28,10 @@
     "prebuild": "npm run build:clean",
     "watch_lib": "rollup -c --watch",
     "build_lib": "rimraf ./lib/* && rollup -c",
-    "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
-    "watch": "cross-env NODE_ENV=development webpack --config internals/webpack/webpack.dev.babel.js --color --progress --hide-modules --display-optimization-bailout --watch",
-    "dist": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.dist.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
-    "front_dist": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
+    "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color --mode production --progress",
+    "watch": "cross-env NODE_ENV=development webpack --config internals/webpack/webpack.dev.babel.js --color --progress --watch",
+    "dist": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.dist.babel.js --color --mode production --progress",
+    "front_dist": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --mode production --color --progress",
     "build:clean": "rimraf ./build",
     "dist:clean": "rimraf ./dist/*",
     "start": "cross-env NODE_ENV=development node server",
@@ -176,6 +175,7 @@
     "ngrok": "3.1.1",
     "node-plop": "0.18.0",
     "null-loader": "0.1.1",
+    "path": "^0.12.7",
     "plop": "2.3.0",
     "pre-commit": "1.2.2",
     "prettier": "1.17.0",

@@ -49,7 +49,14 @@ module.exports = options => ({
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
-        loader: 'url-loader?limit=1000000',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1000000,
+            },
+          },
+        ],
         // use: 'file-loader',
         // options: {
         //   limit() {
