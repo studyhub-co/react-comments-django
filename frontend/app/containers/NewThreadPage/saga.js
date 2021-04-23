@@ -9,7 +9,7 @@ import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { Api } from './api'
 
 import { NEW_THREAD } from './constants'
-import history from '../../utils/history'
+import history from '../../utils/apphistory'
 
 export function* newThread(action) {
   // Select username from store

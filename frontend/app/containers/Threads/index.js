@@ -44,7 +44,7 @@ import saga from './saga'
 import topicsReducer from '../Topics/reducer'
 import topicsSaga from '../Topics/saga'
 
-import history from '../../utils/history'
+import history from '../../utils/apphistory'
 
 const threadsKey = 'threads'
 const topicsKey = 'topics'

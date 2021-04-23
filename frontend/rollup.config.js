@@ -8,10 +8,15 @@ import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import json from 'rollup-plugin-json'
+import includePaths from 'rollup-plugin-includepaths'
 
 import svgr from '@svgr/rollup'
 
 // import pkg from './package.json'
+
+const includePathOptions = {
+  paths: ['./app'],
+}
 
 export default [
   // ThreadComponent // TODO make it with map()
@@ -41,7 +46,10 @@ export default [
       }),
       url({ exclude: ['**/*.svg'] }),
       svgr(),
-      resolve(),
+      includePaths(includePathOptions),
+      resolve({
+        mainFields: ['app'],
+      }),
       json(),
       babel({
         // exclude: 'node_modules/**',
@@ -134,6 +142,10 @@ export default [
       'showdown',
       'showdown-katex',
       'react-mde',
+      // TODO this version of rollup do not support regex, need to upgrade
+      // 'react-bootstrap/*',
+      'react-overlays',
+      'react-bootstrap/Dropdown',
       'react-bootstrap/Button',
       'react-bootstrap/Container',
       'react-bootstrap/Row',
@@ -176,7 +188,8 @@ export default [
       }),
       url({ exclude: ['**/*.svg'] }),
       svgr(),
-      resolve(),
+      includePaths(includePathOptions),
+      resolve({ mainFields: ['app'] }),
       json(),
       babel({
         babelrc: false,
@@ -257,6 +270,9 @@ export default [
       'showdown',
       'showdown-katex',
       'react-mde',
+      // 'react-bootstrap/*',
+      'react-overlays',
+      'react-bootstrap/Dropdown',
       'react-bootstrap/Button',
       'react-bootstrap/Container',
       'react-bootstrap/Row',

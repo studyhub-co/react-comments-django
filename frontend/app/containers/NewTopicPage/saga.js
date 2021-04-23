@@ -9,7 +9,7 @@ import { call, put, select, takeLatest } from 'redux-saga/effects'
 import { Api } from './api'
 
 import { NEW_TOPIC } from './constants'
-import history from '../../utils/history'
+import history from '../../utils/apphistory'
 
 export function* newTopic(action) {
   // Select username from store

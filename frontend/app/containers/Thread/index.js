@@ -59,7 +59,7 @@ import topicsSaga from '../Topics/saga'
 import appReducer from '../App/reducer'
 import appSaga from '../App/saga'
 
-import history from '../../utils/history'
+import history from '../../utils/apphistory'
 import { Post } from '../../components/Comment/post'
 import { RootPost } from '../../components/Comment/rootPost'
 import { makeSelectSignedInUser } from '../App/selectors'

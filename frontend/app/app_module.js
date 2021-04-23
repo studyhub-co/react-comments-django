@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 // import FontFaceObserver from 'fontfaceobserver'
-import history from 'utils/history'
+import history from 'utils/apphistory'
 import 'sanitize.css/sanitize.css'
 // import 'semantic-ui-css/semantic.min.css'
 

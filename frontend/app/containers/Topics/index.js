@@ -12,14 +12,12 @@ import { connect } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroller'
 import { bindActionCreators, compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
-
+import ListGroup from 'react-bootstrap/ListGroup'
 import TopicListItem from 'components/TopicListItem'
+import H2 from 'components/H2'
 
 import { useInjectReducer } from '../../utils/injectReducer'
 import { useInjectSaga } from '../../utils/injectSaga'
-import H2 from 'components/H2'
-// import { List } from 'semantic-ui-react'
-import ListGroup from 'react-bootstrap/ListGroup'
 
 import {
   makeSelectTopicsList,
@@ -34,7 +32,7 @@ import * as loadTopicsActionsCreator from './actions'
 
 import reducer from './reducer'
 import saga from './saga'
-import history from '../../utils/history'
+import history from '../../utils/apphistory'
 
 const key = 'topics'
 

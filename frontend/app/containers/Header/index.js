@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
 import PropTypes from 'prop-types'
-import history from 'utils/history'
+import history from 'utils/apphistory'
 
 import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
