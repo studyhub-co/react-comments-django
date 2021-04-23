@@ -58,7 +58,7 @@ class ThreadCommentsFilter(filters.FilterSet):
         import django
         dj_version = django.get_version()
         if int(dj_version.split('.')[0]) < 2:
-            if self.request.user.is_anonymous():
+            if self.request.user.is_anonymous:
                 return qs
             else:
                 return qs.annotate(
@@ -103,7 +103,7 @@ class UserViewSet(ModelViewSet):
     @action(methods=['GET'],
             detail=False, )
     def me(self, request, *args, **kwargs):
-        if request.user.is_anonymous():
+        if request.user.is_anonymous:
             raise NotFound
         serializer = self.get_serializer(request.user)
         return Response(serializer.data)
@@ -153,7 +153,7 @@ class PostViewSet(mixins.CreateModelMixin,
             if request.user.is_anonymous:  # >= django 2.0
                 raise PermissionDenied
         else:
-            if request.user.is_anonymous():
+            if request.user.is_anonymous:
                 raise PermissionDenied
 
         try:

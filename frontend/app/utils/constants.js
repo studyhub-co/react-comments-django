@@ -2,7 +2,8 @@ export const RESTART_ON_REMOUNT = '@@saga-injector/restart-on-remount'
 export const DAEMON = '@@saga-injector/daemon'
 export const ONCE_TILL_UNMOUNT = '@@saga-injector/once-till-unmount'
 
-const conf = window.DJEDDIT_CONFIG
+// const conf = window.REACT_COMMENTS_DJANGO_CONFIG
+const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 let API_URL_POSTFIX = ''
 if (conf) {
   ;({ API_URL_POSTFIX } = conf)

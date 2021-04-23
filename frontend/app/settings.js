@@ -1,4 +1,4 @@
-const conf = window.DJEDDIT_CONFIG
+const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 
 let ANON_AS_USER_OBJECT = false
 

@@ -10,15 +10,14 @@ import { injectIntl, FormattedMessage, FormattedHTMLMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { bindActionCreators, compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
-// import { Button, Form } from 'semantic-ui-react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { useInjectReducer } from '../../utils/injectReducer'
-import { useInjectSaga } from '../../utils/injectSaga'
-
 import H2 from 'components/H2'
 import ContentEditor from 'components/ContentEditor'
+
+import { useInjectReducer } from '../../utils/injectReducer'
+import { useInjectSaga } from '../../utils/injectSaga'
 
 import { makeSelectSignedInUser } from '../App/selectors'
 import { makeSelectTopic } from '../Topics/selectors'

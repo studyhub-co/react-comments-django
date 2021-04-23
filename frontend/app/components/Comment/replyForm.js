@@ -11,7 +11,7 @@ import 'react-mde/lib/styles/css/react-mde-all.css'
 
 import markdownConverter from './markdownConverter'
 
-const conf = window.DJEDDIT_CONFIG
+const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 
 let DISPLAY_USERNAME_FIELD = 'username'
 

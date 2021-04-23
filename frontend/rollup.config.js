@@ -2,7 +2,8 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 // TODO migrate from external to this plugin
 import external from 'rollup-plugin-peer-deps-external'
-import typescript from 'rollup-plugin-typescript2'
+// import typescript from 'rollup-plugin-typescript2'
+import copy from 'rollup-plugin-copy'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
@@ -15,7 +16,7 @@ import svgr from '@svgr/rollup'
 export default [
   // ThreadComponent // TODO make it with map()
   {
-    input: 'app/ThreadComponent.js',
+    input: 'app/ThreadComponent.jsx',
     output: [
       {
         file: 'lib/ThreadComponent.js',
@@ -95,10 +96,14 @@ export default [
         //   'node_modules/create-react-class/**', // adding the module with that "default not exported by" message to this includes list, made that message go away
         // ],
       }),
-      typescript({
-        rollupCommonJSResolveHack: false,
-        clean: true,
+      copy({
+        targets: [{ src: 'app/ThreadComponent.d.ts', dest: 'lib' }],
       }),
+      // generate wrong d.ts for react components in js
+      // typescript({
+      //   rollupCommonJSResolveHack: false,
+      //   clean: true,
+      // }),
     ],
     external: [
       'react',
@@ -146,7 +151,7 @@ export default [
   },
   // ThreadsListComponent
   {
-    input: 'app/TopicsListComponent.js',
+    input: 'app/TopicsListComponent.jsx',
     output: [
       {
         file: 'lib/TopicsListComponent.js',
@@ -214,10 +219,14 @@ export default [
         },
         exclude: ['node_modules/**'],
       }),
-      typescript({
-        rollupCommonJSResolveHack: false,
-        clean: true,
+      copy({
+        targets: [{ src: 'app/TopicsListComponent.d.ts', dest: 'lib' }],
       }),
+      // generate wrong d.ts for react components in js
+      // typescript({
+      //   rollupCommonJSResolveHack: false,
+      //   clean: true,
+      // }),
     ],
     external: [
       'react',

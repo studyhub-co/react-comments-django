@@ -1,4 +1,6 @@
-* django-djeddit version:
+Use [frontend] or [backend] issue in title. 
+
+* react-comments-django version:
 * Django version:
 * Python version:
 * Operating System:

@@ -36,7 +36,7 @@ import saga from './saga'
 
 const key = 'home'
 
-const conf = window.DJEDDIT_CONFIG
+const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 let EMBEDDED_MODE = false
 if (conf) {
   ;({ EMBEDDED_MODE } = conf)

@@ -13,7 +13,7 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa'
 import { ReplyForm } from './replyForm'
 import { EditForm } from './editForm'
 
-const conf = window.DJEDDIT_CONFIG
+const conf = window.REACT_COMMENTS_DJANGO_CONFIG
 
 let DISPLAY_USERNAME_FIELD = 'username'
 
