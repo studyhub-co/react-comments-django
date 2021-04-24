@@ -1,0 +1,8 @@
+to install react-comments-django-client locally run:
+
+$npm install ../frontend/
+
+package.json will have:
+"@studyhub.co/react-comments-django-client": "file:..\\frontend",
+
+
