@@ -3,23 +3,14 @@
  *
  * This contains all the text for the HomePage component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from 'react-intl'
 
-export const scope = 'boilerplate.containers.HomePage';
+export const scope = 'boilerplate.containers.HomePage'
 
 export default defineMessages({
-  djedditReactWelcome: {
+  reactDjangoCommentsWelcome: {
     id: `${scope}.welcome.header`,
-    defaultMessage: 'Welcome to the djeddit-react!',
-  },
-  startProjectHeader: {
-    id: `${scope}.start_project.header`,
-    defaultMessage: 'Start your next react project in seconds!',
-  },
-  startProjectMessage: {
-    id: `${scope}.start_project.message`,
-    defaultMessage:
-      'A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices',
+    defaultMessage: 'Welcome to the react-comments-django!',
   },
   trymeHeader: {
     id: `${scope}.tryme.header`,
@@ -33,4 +24,4 @@ export default defineMessages({
     id: `${scope}.tryme.atPrefix`,
     defaultMessage: '@',
   },
-});
+})

@@ -9,6 +9,6 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_THREADS = 'djeddit/ThreadsList/LOAD_THREADS'
-export const LOAD_THREADS_SUCCESS = 'djeddit/ThreadsList/LOAD_THREADS_SUCCESS'
-export const LOAD_THREADS_ERROR = 'djeddit/ThreadsList/LOAD_THREADS_ERROR'
+export const LOAD_THREADS = 'reactCommentsDjango/ThreadsList/LOAD_THREADS'
+export const LOAD_THREADS_SUCCESS = 'reactCommentsDjango/ThreadsList/LOAD_THREADS_SUCCESS'
+export const LOAD_THREADS_ERROR = 'reactCommentsDjango/ThreadsList/LOAD_THREADS_ERROR'

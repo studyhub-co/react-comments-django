@@ -48,12 +48,12 @@ module.exports = require('./webpack.base.babel')({
     filename: '[name].[chunkhash].js',
     path: path.resolve(process.cwd(), 'dist'),
     chunkFilename: '[name].[chunkhash].chunk.js',
-    // TODO create configurable path
-    // can't use publicPath due public path will embed into runtime file and no processed by django template engine
-    // TODO proccess js with template engine?
-    // publicPath: '{{STATIC_URL}}{{DJEDDIT_STATIC_FILES_URL_PREFIX}}',
-    publicPath:
-      'https://assets.physicsisbeautiful.com/js/npm/@vermus/django-react-djeddit-client/dist/',
+    // // TODO create configurable path
+    // // can't use publicPath due public path will embed into runtime file and no processed by django template engine
+    // // TODO process js with template engine?
+    // // publicPath: '{{STATIC_URL}}{{DJEDDIT_STATIC_FILES_URL_PREFIX}}',
+    // publicPath:
+    //   'https://assets.physicsisbeautiful.com/js/npm/@vermus/django-react-djeddit-client/dist/',
   },
 
   optimization: {
@@ -175,9 +175,9 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     new WebpackPwaManifest({
-      name: 'React Reddit Django',
-      short_name: 'React RD',
-      description: 'React Django like Reddit forum application',
+      name: 'React comments django',
+      short_name: 'React comments django',
+      description: 'React comments django, like Reddit forum application',
       background_color: '#fafafa',
       theme_color: '#b1624d',
       inject: true,

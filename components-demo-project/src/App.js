@@ -8,13 +8,14 @@ import TopicsListComponent from '@studyhub.co/react-comments-django-client/lib/T
 // import logo from './logo.svg';
 import './App.css';
 
+// import { history } from './configureStore'
+// this is local store for demo project
 import configureStore, { history } from './configureStore'
 const store = configureStore()
 
 const DiscussionIndex = props => {
-  const match = useRouteMatch()
-
-  console.log(match.path)
+  // const match = useRouteMatch()
+  // console.log(match.path)
 
   return (
     <div>

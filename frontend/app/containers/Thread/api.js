@@ -3,8 +3,8 @@ import Cookies from 'js-cookie'
 import { API_PREFIX } from '../../utils/constants'
 import request from '../../utils/request'
 
-function getThread(threadSlug) {
-  const url = `${API_PREFIX}threads/${threadSlug}/`
+function getThread(threadId) {
+  const url = `${API_PREFIX}threads/${threadId}/`
 
   return request(url, {
     method: 'GET',

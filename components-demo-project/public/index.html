@@ -9,6 +9,13 @@
       name="description"
       content="Web site created using create-react-app"
     />
+      <meta name="mobile-web-app-capable" content="yes">
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -28,6 +35,18 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="text/javascript">
+      var REACT_COMMENTS_DJANGO_CONFIG = {
+        // API_PROFILE_URL: '/api/v1/profiles/me/',
+        EMBEDDED_MODE: true,
+        ROOT_URL: '/',
+        API_URL_POSTFIX: '',
+        API_URL_DOMAIN: 'http://localhost:8800',
+        // API_URL_POSTFIX: 'react-comments/',
+        DISPLAY_USERNAME_FIELD: 'display_name',
+        ANON_AS_USER_OBJECT: true
+      }
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

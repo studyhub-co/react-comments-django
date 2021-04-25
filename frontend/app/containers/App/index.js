@@ -28,8 +28,7 @@ import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import PropTypes from 'prop-types'
-// import GlobalStyle from '../../global-styles'
-import DjedditStyle from '../../djeddit-styles'
+import GlobalStyle from '../../styles'
 import { useInjectSaga } from '../../utils/injectSaga'
 import saga from './saga'
 // import { makeSelectError, makeSelectLoading, makeSelectRepos } from './selectors'
@@ -60,10 +59,13 @@ function App({ loadSignedInUserAction, loading }) {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React djeddit client"
-        defaultTitle="React djeddit client"
+        titleTemplate="%s - React comments Django client"
+        defaultTitle="React comments Django client"
       >
-        <meta name="description" content="React djeddit client application" />
+        <meta
+          name="description"
+          content="React comments Django client application"
+        />
       </Helmet>
       {/* <Header signedInUser={signedInUser} /> */}
       <Header />
@@ -74,7 +76,7 @@ function App({ loadSignedInUserAction, loading }) {
         <Route path="/signin" component={SignInPage} />
         <Route exact path="/topics" component={TopicsList} />
         {/* ThreadsList aka TopicPage */}
-        <Route exact path={TOPIC_URL_MASK} component={ThreadsList} />
+        <Route exact path={`/${TOPIC_URL_MASK}`} component={ThreadsList} />
         <Route
           exact
           path={
@@ -89,9 +91,8 @@ function App({ loadSignedInUserAction, loading }) {
         />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      {/*<Footer />*/}
-      <DjedditStyle />
-      {/*<GlobalStyle />*/}
+      {/* <Footer /> */}
+      <GlobalStyle />
     </AppWrapper>
   )
 }

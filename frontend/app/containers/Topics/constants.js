@@ -9,10 +9,10 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_TOPICS = 'djeddit/Topics/LOAD_TOPICS'
-export const LOAD_TOPICS_SUCCESS = 'djeddit/Topics/LOAD_TOPICS_SUCCESS'
-export const LOAD_TOPICS_ERROR = 'djeddit/Topics/LOAD_TOPICS_ERROR'
+export const LOAD_TOPICS = 'reactCommentsDjango/Topics/LOAD_TOPICS'
+export const LOAD_TOPICS_SUCCESS = 'reactCommentsDjango/Topics/LOAD_TOPICS_SUCCESS'
+export const LOAD_TOPICS_ERROR = 'reactCommentsDjango/Topics/LOAD_TOPICS_ERROR'
 
-export const LOAD_TOPIC = 'djeddit/Topics/LOAD_TOPIC'
-export const LOAD_TOPIC_SUCCESS = 'djeddit/Topics/LOAD_TOPIC_SUCCESS'
-export const LOAD_TOPIC_ERROR = 'djeddit/Topics/LOAD_TOPIC_ERROR'
+export const LOAD_TOPIC = 'reactCommentsDjango/Topics/LOAD_TOPIC'
+export const LOAD_TOPIC_SUCCESS = 'reactCommentsDjango/Topics/LOAD_TOPIC_SUCCESS'
+export const LOAD_TOPIC_ERROR = 'reactCommentsDjango/Topics/LOAD_TOPIC_ERROR'

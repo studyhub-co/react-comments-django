@@ -4,7 +4,7 @@ import { routerMiddleware } from 'connected-react-router'
 import createRootReducer from './reducers'
 
 // export const history = createBrowserHistory({basename: '/beta'})
-export const history = createBrowserHistory({basename: '/beta'})
+export const history = createBrowserHistory()
 
 export default function configureStore(preloadedState) {
   const store = createStore(

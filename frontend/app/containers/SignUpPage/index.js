@@ -111,7 +111,7 @@ export function SignUpPage({
     <article>
       <Helmet>
         <title>Sign Up</title>
-        <meta name="description" content="Djeddit react signup page" />
+        <meta name="description" content="React comments django signup page" />
       </Helmet>
       <div>
         <CenteredSection>

@@ -88,6 +88,8 @@ export function TopicsList({ topicListActions, topicsList }) {
     ))
   }
 
+  // console.log('topics loaded')
+
   return (
     <article>
       <Helmet>

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'corsheaders',
     # project apps
     'react_comments_django',
     'django_filters'
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
 _MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -50,6 +52,11 @@ if django.VERSION >= (1, 10):
 else:
     MIDDLEWARE_CLASSES = _MIDDLEWARE_CLASSES
 
+CORS_ALLOWED_ORIGINS = [
+    # allow api call from components-demo-project
+    "http://localhost:3000",
+]
+
 ROOT_URLCONF = "tests.urls"
 
 TEMPLATES = [
@@ -57,12 +64,12 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # os.path.join(BASE_DIR, 'backend', 'templates'),
-            os.path.join(BASE_DIR, 'frontend', 'build')] # TODO it should be configurable
+            os.path.join(BASE_DIR, 'frontend', 'build')]  # TODO it should be configurable
         ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'react_comments_django.context_processors.react_comments_django_settings',
+                # 'react_comments_django.context_processors.react_comments_django_settings',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -89,7 +96,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend', 'build')]
 # CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # django config:
-REACT_COMMENTS_DJANGO_BASE_TEMPLATE = "react-comments-django/react_index.html"
+# REACT_COMMENTS_DJANGO_BASE_TEMPLATE = "react-comments-django/react_index.html"
 REACT_COMMENTS_DJANGO_USE_INTERNAL_USER = True
 
 # email

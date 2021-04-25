@@ -5,7 +5,7 @@
  */
 import { defineMessages } from 'react-intl'
 
-export const scope = 'django-react-djeddit-client.components.Header'
+export const scope = 'react-comments-django-client.components.Header'
 
 export default defineMessages({
   home: {

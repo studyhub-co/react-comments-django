@@ -1,6 +1,7 @@
 /**
  * COMMON WEBPACK CONFIGURATION
  */
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
 const path = require('path')
 const webpack = require('webpack')
@@ -128,6 +129,22 @@ module.exports = options => ({
           },
         },
       },
+      // not works for me
+      // // solution to process.cwd() is not a function for react-markdown/vfile
+      // // https://github.com/remarkjs/react-markdown/issues/339#issuecomment-683199835
+      // // https://github.com/vfile/vfile/issues/38
+      // {
+      //   test: /node_modules\/vfile\/core\.js/,
+      //   use: [
+      //     {
+      //       loader: 'imports-loader',
+      //       options: {
+      //         type: 'commonjs',
+      //         imports: ['single process/browser process'],
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: options.plugins.concat([
@@ -137,6 +154,7 @@ module.exports = options => ({
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
     }),
+    new NodePolyfillPlugin(),
   ]),
   resolve: {
     modules: ['node_modules', 'app'],

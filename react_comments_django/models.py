@@ -7,6 +7,7 @@ from django.core.validators import RegexValidator
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.db import models
+from django.urls import reverse
 
 # Third party imports
 from mptt.models import MPTTModel, TreeForeignKey
@@ -103,6 +104,9 @@ class Thread(NamedModel):
     @staticmethod
     def gen_slug(title):
         return slugify(title)[:180]
+
+    def get_absolute_url(self):
+        return '/{}/{}/{}'.format(self.topic.slug, self.id, self.slug)
 
     def delete(self, *args, **kwargs):
         try:

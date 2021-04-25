@@ -111,7 +111,7 @@ export function SignInPage({
     <article>
       <Helmet>
         <title>Sign In</title>
-        <meta name="description" content="Djeddit react signin page" />
+        <meta name="description" content="React comments django sign in page" />
       </Helmet>
       <div>
         <CenteredSection>

@@ -13,7 +13,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from react_comments_django.sitemaps import ThreadSitemap
 
 sitemaps = {
-    'djeddit': ThreadSitemap
+    'react-comments-django': ThreadSitemap
 }
 
 # from django.views.generic.base import TemplateView

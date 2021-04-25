@@ -31,7 +31,7 @@ export default [
         sourcemap: true,
       },
       {
-        file: 'lib/ThreadComponent.es.js',
+        file: 'lib/es/ThreadComponent.es.js',
         // file: pkg.module,
         format: 'es',
         name: 'ThreadComponent',
@@ -166,17 +166,19 @@ export default [
     input: 'app/TopicsListComponent.jsx',
     output: [
       {
-        file: 'lib/TopicsListComponent.js',
+        // file: 'lib/TopicsListComponent.js',
+        dir: 'lib/',
         // file: pkg.main,
         format: 'amd',
         name: 'TopicsListComponent',
         sourcemap: true,
       },
       {
-        file: 'lib/TopicsListComponent.es.js',
+        dir: 'lib/es/',
+        // file: 'lib/TopicsListComponent.es.js',
         // file: pkg.module,
         format: 'es',
-        name: 'TopicsListComponent',
+        name: 'TopicsListComponent.es',
         sourcemap: true,
       },
     ],

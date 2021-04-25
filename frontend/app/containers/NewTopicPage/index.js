@@ -122,7 +122,7 @@ export function NewTopicPage({
     <article>
       <Helmet>
         <title>New topic</title>
-        <meta name="description" content="Djeddit react newtopic page" />
+        <meta name="description" content="React comments django new topic page" />
       </Helmet>
       <div>
         <CenteredSection>

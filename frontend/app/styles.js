@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-const DjedditStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   html, body {
   height: 100%;
   font-size: 12px;
@@ -535,4 +535,4 @@ h6, .text-muted {
 
 `
 
-export default DjedditStyle
+export default GlobalStyle

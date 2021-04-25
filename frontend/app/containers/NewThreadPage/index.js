@@ -146,7 +146,10 @@ export function NewThreadPage({
     <article>
       <Helmet>
         <title>New Thread</title>
-        <meta name="description" content="Djeddit react newThread page" />
+        <meta
+          name="description"
+          content="React comments django new thread page"
+        />
       </Helmet>
       <div>
         <CenteredSection>

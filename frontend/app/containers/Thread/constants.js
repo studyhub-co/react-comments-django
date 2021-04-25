@@ -9,23 +9,23 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_THREAD = 'djeddit/Thread/LOAD_THREAD'
-export const LOAD_THREAD_SUCCESS = 'djeddit/Thread/LOAD_THREAD_SUCCESS'
-export const LOAD_THREAD_ERROR = 'djeddit/Thread/LOAD_THREAD_ERROR'
+export const LOAD_THREAD = 'reactCommentsDjango/Thread/LOAD_THREAD'
+export const LOAD_THREAD_SUCCESS = 'reactCommentsDjango/Thread/LOAD_THREAD_SUCCESS'
+export const LOAD_THREAD_ERROR = 'reactCommentsDjango/Thread/LOAD_THREAD_ERROR'
 
-export const LOAD_POSTS = 'djeddit/Thread/LOAD_POSTS'
-export const LOAD_POSTS_SUCCESS = 'djeddit/Thread/LOAD_POSTS_SUCCESS'
-export const LOAD_POSTS_ERROR = 'djeddit/Thread/LOAD_POSTS_ERROR'
+export const LOAD_POSTS = 'reactCommentsDjango/Thread/LOAD_POSTS'
+export const LOAD_POSTS_SUCCESS = 'reactCommentsDjango/Thread/LOAD_POSTS_SUCCESS'
+export const LOAD_POSTS_ERROR = 'reactCommentsDjango/Thread/LOAD_POSTS_ERROR'
 
-export const NEW_POST = 'djeddit/Thread/NEW_POST'
-export const NEW_POST_SUCCESS = 'djeddit/Thread/NEW_POST_SUCCESS'
-export const NEW_POST_ERROR = 'djeddit/Thread/NEW_POST_ERROR'
+export const NEW_POST = 'reactCommentsDjango/Thread/NEW_POST'
+export const NEW_POST_SUCCESS = 'reactCommentsDjango/Thread/NEW_POST_SUCCESS'
+export const NEW_POST_ERROR = 'reactCommentsDjango/Thread/NEW_POST_ERROR'
 
-export const UPDATE_POST = 'djeddit/Thread/UPDATE_POST'
-export const UPDATE_POST_SUCCESS = 'djeddit/Thread/UPDATE_POST_SUCCESS'
-export const UPDATE_POST_ERROR = 'djeddit/Thread/UPDATE_POST_ERROR'
+export const UPDATE_POST = 'reactCommentsDjango/Thread/UPDATE_POST'
+export const UPDATE_POST_SUCCESS = 'reactCommentsDjango/Thread/UPDATE_POST_SUCCESS'
+export const UPDATE_POST_ERROR = 'reactCommentsDjango/Thread/UPDATE_POST_ERROR'
 
-export const DELETE_POST = 'djeddit/Thread/DELETE_POST'
-export const DELETE_POST_SUCCESS = 'djeddit/Thread/DELETE_POST_SUCCESS'
+export const DELETE_POST = 'reactCommentsDjango/Thread/DELETE_POST'
+export const DELETE_POST_SUCCESS = 'reactCommentsDjango/Thread/DELETE_POST_SUCCESS'
 
-export const VOTE_POST = 'djeddit/Thread/VOTE_POST'
+export const VOTE_POST = 'reactCommentsDjango/Thread/VOTE_POST'

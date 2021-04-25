@@ -9,5 +9,5 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const NEW_THREAD = 'djeddit/NewThreadPage/NEW_THREAD'
-export const NEW_THREAD_SUCCESS = 'djeddit/NewThreadPage/NEW_THREAD_SUCCESS'
+export const NEW_THREAD = 'reactCommentsDjango/NewThreadPage/NEW_THREAD'
+export const NEW_THREAD_SUCCESS = 'reactCommentsDjango/NewThreadPage/NEW_THREAD_SUCCESS'

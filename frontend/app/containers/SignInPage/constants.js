@@ -9,5 +9,5 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const SIGN_IN = 'djeddit/SignInPage/SIGN_IN'
-export const SIGN_IN_SUCCESS = 'djeddit/SignInPage/SIGN_IN_SUCCESS'
+export const SIGN_IN = 'reactCommentsDjango/SignInPage/SIGN_IN'
+export const SIGN_IN_SUCCESS = 'reactCommentsDjango/SignInPage/SIGN_IN_SUCCESS'

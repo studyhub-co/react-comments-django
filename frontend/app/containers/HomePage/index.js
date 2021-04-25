@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect, memo } from 'react'
+import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
@@ -12,20 +13,16 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
 
-import { useInjectReducer } from '../../utils/injectReducer'
-import { useInjectSaga } from '../../utils/injectSaga'
 import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors'
 import H2 from 'components/H2'
-// import ReposList from 'components/ReposList'
-// import AtPrefix from './AtPrefix'
-import { Redirect } from 'react-router-dom'
+import { useInjectReducer } from '../../utils/injectReducer'
+import { useInjectSaga } from '../../utils/injectSaga'
+
 import CenteredSection from './CenteredSection'
-// import Form from './Form'
-// import Input from './Input'
 import Section from './Section'
 import messages from './messages'
 import { loadRepos } from '../App/actions'
@@ -70,13 +67,13 @@ export function HomePage({
     <article>
       <Helmet>
         <title>Home Page</title>
-        <meta name="description" content="React comments Django homepage" />
+        <meta name="description" content="React comments django homepage" />
       </Helmet>
       <div>
         <CenteredSection>
           <H2>
             {/* <FormattedMessage {...messages.startProjectHeader} /> */}
-            <FormattedMessage {...messages.djedditReactWelcome} />
+            <FormattedMessage {...messages.reactDjangoCommentsWelcome} />
           </H2>
           <p>{/* <FormattedMessage {...messages.startProjectMessage} /> */}</p>
         </CenteredSection>

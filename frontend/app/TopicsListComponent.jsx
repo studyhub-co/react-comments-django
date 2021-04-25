@@ -15,14 +15,28 @@ import { Provider } from 'react-redux'
 // import history from 'utils/history'
 import 'sanitize.css/sanitize.css'
 
-import TopicsList from './containers/Topics'
+import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { IntlProvider } from 'react-intl'
+
+// import TopicsList from './containers/Topics'
 
 // Import Language Provider
 // import LanguageProvider from 'containers/LanguageProvider'
 
-import configureStore from './configureStore'
+import { TOPIC_URL_MASK } from './containers/App/urls'
+import ThreadsList from './containers/Threads/Loadable'
+import ThreadPage from './containers/Thread/Loadable'
+import NewTopicPage from './containers/NewTopicPage/Loadable'
+import NewThreadPage from './containers/NewThreadPage/Loadable'
+// import NotFoundPage from './containers/NotFoundPage/Loadable'
+import HomePage from './containers/HomePage/Loadable'
+
+import * as enTranslationMessages from './translations/en.json'
+import TopicsList from './containers/Topics/Loadable'
+// import LanguageProvider from './containers/LanguageProvider'
 
 // Create redux store with history
+import configureStore from './configureStore'
 const initialState = {}
 const store = configureStore(initialState)
 
@@ -32,10 +46,45 @@ const store = configureStore(initialState)
  * @constructor
  */
 function TopicsListComponent() {
+  const match = useRouteMatch()
+
+  console.log(match.path)
+
   return (
-    <Provider store={store}>
-      <TopicsList />
-    </Provider>
+    <IntlProvider locale="en" messages={enTranslationMessages}>
+      <Provider store={store}>
+        <Switch>
+          <Route exact path={`${match.path}`} component={HomePage} />
+          <Route exact path={`${match.path}topics`} component={TopicsList} />
+          <Route
+            exact
+            path={`${match.path}${TOPIC_URL_MASK}`}
+            component={ThreadsList}
+          />
+          <Route
+            exact
+            path={`${
+              match.path
+            }:topicSlug([A-Za-z0-9_\\-\\.]+)/:threadId(\\d+)/:threadSlug([A-Za-z0-9_\\-\\.]+)`}
+            component={ThreadPage}
+          />
+          <Route
+            exact
+            path={`${match.path}new-topic`}
+            component={NewTopicPage}
+          />
+          <Route
+            exact
+            path={`${
+              match.path
+            }topics/:topicSlug([A-Za-z0-9_\\-\\.]+)/new-thread`}
+            component={NewThreadPage}
+          />
+          {/* we assume that parent project has his own 404 page */}
+          {/* <Route path="" component={NotFoundPage} /> */}
+        </Switch>
+      </Provider>
+    </IntlProvider>
   )
 }
 

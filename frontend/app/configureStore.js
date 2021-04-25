@@ -49,8 +49,19 @@ export default function configureStore(initialState = {}, history) {
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
-  if (module.hot) {
+
+  const conf = window.REACT_COMMENTS_DJANGO_CONFIG
+  let EMBEDDED_MODE = false
+  if (conf) {
+    ;({ EMBEDDED_MODE } = conf)
+  }
+
+  if (module.hot && !EMBEDDED_MODE) {
+    // don't use with embedded mode due file path confusing
+    // const reducers = require.resolve('./reducers.js')
+
     module.hot.accept('./reducers', () => {
+      // module.hot.accept(reducers, () => {
       store.replaceReducer(createReducer(store.injectedReducers))
     })
   }

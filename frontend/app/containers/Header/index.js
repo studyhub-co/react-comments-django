@@ -41,7 +41,7 @@ const Header = ({ intl, location, signedInUser }) => {
 
   const topicUrlMatch = matchPath(
     location.pathname, // like: /course/123
-    { path: TOPIC_URL_MASK },
+    { path: `/${TOPIC_URL_MASK}` },
   )
   useEffect(() => {
     if (location) {
@@ -74,9 +74,7 @@ const Header = ({ intl, location, signedInUser }) => {
     }
   }, [location])
 
-  // console.log(topicUrlMatch)
-
-  // TODO set match href menu intial
+  // TODO set match href menu initial
   const [activeMenu, setActiveMenu] = useState('home')
 
   const handleHomeClick = () => {

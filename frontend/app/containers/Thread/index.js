@@ -193,6 +193,7 @@ export function ThreadPage({
       if (!topic) {
         topicsActions.loadTopic(match.params.topicSlug)
       }
+      console.log(match)
       // load thread from server
       threadActions.loadThread(match.params.threadId)
       // load posts of thread from server
