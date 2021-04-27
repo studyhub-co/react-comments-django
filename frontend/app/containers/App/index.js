@@ -77,6 +77,11 @@ function App({ loadSignedInUserAction, loading }) {
         <Route exact path="/topics" component={TopicsList} />
         {/* ThreadsList aka TopicPage */}
         <Route exact path={`/${TOPIC_URL_MASK}`} component={ThreadsList} />
+        {/* should be upper then ThreadPage! TODO rewrite urls navigation */}
+        <Route
+          path="/topics/:topicSlug([A-Za-z0-9_\-\.]+)/new-thread"
+          component={NewThreadPage}
+        />
         <Route
           exact
           path={
@@ -85,10 +90,6 @@ function App({ loadSignedInUserAction, loading }) {
           component={ThreadPage}
         />
         <Route path="/new-topic" component={NewTopicPage} />
-        <Route
-          path="/topics/:topicSlug([A-Za-z0-9_\-\.]+)/new-thread"
-          component={NewThreadPage}
-        />
         <Route path="" component={NotFoundPage} />
       </Switch>
       {/* <Footer /> */}

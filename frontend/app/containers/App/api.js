@@ -7,7 +7,7 @@ function getSignedInUser() {
 
   let API_PROFILE_URL = `${API_PREFIX}users/me/`
 
-  if (conf) {
+  if (conf && 'API_PROFILE_URL' in conf) {
     ;({ API_PROFILE_URL } = conf)
   }
 

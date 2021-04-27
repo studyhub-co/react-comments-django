@@ -12,10 +12,13 @@ import history from './utils/apphistory'
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
-export default function createReducer(injectedReducers = {}) {
+export default function createReducer(injectedReducers = {}, _history) {
+  // console.trace(_history)
+
   const rootReducer = combineReducers({
     global: globalReducer,
     language: languageProviderReducer,
+    // router: connectRouter(_history || history),
     router: connectRouter(history),
     ...injectedReducers,
   })

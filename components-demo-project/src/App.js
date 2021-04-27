@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+import { connect } from 'react-redux';
 import { Provider } from 'react-redux'
 import { Route, Switch, useRouteMatch } from 'react-router-dom' // react-router v4/v5
 import { ConnectedRouter } from 'connected-react-router'
@@ -13,25 +14,40 @@ import './App.css';
 import configureStore, { history } from './configureStore'
 const store = configureStore()
 
-const DiscussionIndex = props => {
+const _DiscussionIndex = props => {
   // const match = useRouteMatch()
   // console.log(match.path)
 
+  const { router } = props;
+
+  // console.log(router);
+
   return (
-    <div>
       <TopicsListComponent
         anonAsUserObject={Boolean(true)}
+        history={history}
+        // on={props.history}
       />
-    </div>
   )
 }
+
+const DiscussionIndex = connect(
+  (state) => {
+    return state;
+  }
+)(_DiscussionIndex);
 
 function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Switch>
-          <Route path={'/'} component={DiscussionIndex} />
+          {/*<Route path={'/'} component={DiscussionIndex} />*/}
+          <Route
+            path={'/'}
+            render={({ match }) => {
+              return <DiscussionIndex history={history} />
+          }} />
         </Switch>
       </ConnectedRouter>
     </Provider>

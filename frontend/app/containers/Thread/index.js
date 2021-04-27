@@ -105,6 +105,7 @@ export function ThreadPage({
   signedInUser,
   threadId,
   anonAsUserObject = settings.anonAsUserObject,
+  history: _history,
 }) {
   useInjectReducer({ key: threadKey, reducer })
   useInjectSaga({ key: threadKey, saga })
@@ -133,6 +134,10 @@ export function ThreadPage({
           onClick: evt => {
             evt.preventDefault()
             history.push('/topics')
+            if (_history) {
+              // parent app history
+              _history.push({ pathname: `/topics` })
+            }
           },
         },
         {
@@ -143,6 +148,10 @@ export function ThreadPage({
           onClick: evt => {
             evt.preventDefault()
             history.push(`/topics/${topic.slug}`)
+            if (_history) {
+              // parent app history
+              _history.push({ pathname: `/topics/${topic.slug}` })
+            }
           },
         },
       ])
@@ -193,7 +202,6 @@ export function ThreadPage({
       if (!topic) {
         topicsActions.loadTopic(match.params.topicSlug)
       }
-      console.log(match)
       // load thread from server
       threadActions.loadThread(match.params.threadId)
       // load posts of thread from server
@@ -373,7 +381,10 @@ export function ThreadPage({
           <Helmet>
             {/* TODO add titles */}
             <title>Thread</title>
-            <meta name="description" content="React comments Django React thread" />
+            <meta
+              name="description"
+              content="React comments Django React thread"
+            />
           </Helmet>
           <Breadcrumb sections={breadcrumbSections} />
         </React.Fragment>

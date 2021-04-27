@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroller'
 import { bindActionCreators, compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 import ThreadListItem from '../../components/ThreadListItem'
 import Breadcrumb from '../../components/Breadcrumb'
@@ -19,7 +20,7 @@ import Breadcrumb from '../../components/Breadcrumb'
 import { useInjectReducer } from '../../utils/injectReducer'
 import { useInjectSaga } from '../../utils/injectSaga'
 import H2 from '../../components/H2'
-import ListGroup from 'react-bootstrap/ListGroup'
+
 import {
   makeSelectThreadsList,
   // makeSelectLoading,
@@ -55,6 +56,7 @@ export function ThreadsList({
   match,
   threadsList,
   topic,
+  history: _history,
 }) {
   useInjectReducer({ key: threadsKey, reducer })
   useInjectSaga({ key: threadsKey, saga })
@@ -75,6 +77,10 @@ export function ThreadsList({
       onClick: evt => {
         evt.preventDefault()
         history.push('/topics')
+        if (_history) {
+          // parent app history
+          _history.push({ pathname: `/topics` })
+        }
       },
     },
   ]
@@ -100,6 +106,10 @@ export function ThreadsList({
 
   const onThreadClick = (e, item) => {
     history.push(`/${topic.slug}/${item.id}/${item.slug}`)
+    if (_history) {
+      // parent app history
+      _history.push({ pathname: `/${topic.slug}/${item.id}/${item.slug}` })
+    }
   }
 
   useEffect(() => {

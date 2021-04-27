@@ -36,7 +36,11 @@ import history from '../../utils/apphistory'
 
 const key = 'topics'
 
-export function TopicsList({ topicListActions, topicsList }) {
+export function TopicsList({
+  topicListActions,
+  topicsList,
+  history: _history,
+}) {
   useInjectReducer({ key, reducer })
   useInjectSaga({ key, saga })
 
@@ -64,6 +68,10 @@ export function TopicsList({ topicListActions, topicsList }) {
 
   const onTopicClick = (e, slug) => {
     history.push(`/topics/${slug}`)
+    if (_history) {
+      // parent app history
+      _history.push({ pathname: `/topics/${slug}` })
+    }
   }
 
   useEffect(() => {
