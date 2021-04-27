@@ -11,43 +11,35 @@ import './App.css';
 
 // import { history } from './configureStore'
 // this is local store for demo project
-import configureStore, { history } from './configureStore'
+import configureStore, { history, basename } from './configureStore'
 const store = configureStore()
 
-const _DiscussionIndex = props => {
-  // const match = useRouteMatch()
-  // console.log(match.path)
-
-  const { router } = props;
-
-  // console.log(router);
-
+const _DiscussionIndex = () => {
   return (
       <TopicsListComponent
         anonAsUserObject={Boolean(true)}
         history={history}
-        // on={props.history}
       />
   )
 }
 
-const DiscussionIndex = connect(
-  (state) => {
-    return state;
-  }
-)(_DiscussionIndex);
+// const DiscussionIndex = connect(
+//   (state) => {
+//     return state;
+//   }
+// )(_DiscussionIndex);
 
 function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Switch>
-          {/*<Route path={'/'} component={DiscussionIndex} />*/}
-          <Route
-            path={'/'}
-            render={({ match }) => {
-              return <DiscussionIndex history={history} />
-          }} />
+          <Route path={'/discussion'} component={_DiscussionIndex} />
+          {/*<Route*/}
+          {/*  path={'/'}*/}
+          {/*  render={({ match }) => {*/}
+          {/*    return <DiscussionIndex/>*/}
+          {/*}} />*/}
         </Switch>
       </ConnectedRouter>
     </Provider>

@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroller'
+import { useRouteMatch } from 'react-router-dom'
 import { bindActionCreators, compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
 import ListGroup from 'react-bootstrap/ListGroup'
@@ -44,6 +45,8 @@ export function TopicsList({
   useInjectReducer({ key, reducer })
   useInjectSaga({ key, saga })
 
+  const match = useRouteMatch()
+
   const [topics, setTopics] = useState([])
   const [hasMoreItems, setHasMoreItems] = useState(false)
   const [nextHref, setNextHref] = useState(null)
@@ -67,10 +70,16 @@ export function TopicsList({
   }
 
   const onTopicClick = (e, slug) => {
-    history.push(`/topics/${slug}`)
+    let baseName = ''
+    if (_history) {
+      baseName = _history.createHref({ pathname: '' }).slice(0, -1)
+    }
+
+    // inside history do not know about external history basename, so add this
+    history.push(`${baseName}${match.path}/${slug}`)
     if (_history) {
       // parent app history
-      _history.push({ pathname: `/topics/${slug}` })
+      _history.push({ pathname: `${match.path}/${slug}` })
     }
   }
 

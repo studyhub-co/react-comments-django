@@ -59,6 +59,11 @@ function TopicsListComponent(props) {
   //   console.log(route)
   // }
 
+  // we use match.path because we can't use basename for history
+  const path = '' ? match.path === '/' : match.path
+
+  // console.log(path)
+
   return (
     <IntlProvider locale="en" messages={enTranslationMessages}>
       <Provider store={store}>
@@ -66,13 +71,13 @@ function TopicsListComponent(props) {
           {/* <Route exact path={`${match.path}`} component={HomePage} /> */}
           <Route
             exact
-            path={`${match.path}`}
+            path={`${path}`}
             render={tProps => <HomePage history={history} {...tProps} />}
           />
           {/* <Route exact path={`${match.path}topics`} component={TopicsList} /> */}
           <Route
             exact
-            path={`${match.path}topics`}
+            path={`${path}/topics`}
             render={tProps => <TopicsList history={history} {...tProps} />}
           />
           {/* <Route */}
@@ -82,7 +87,7 @@ function TopicsListComponent(props) {
           {/* /> */}
           <Route
             exact
-            path={`${match.path}${TOPIC_URL_MASK}`}
+            path={`${path}/${TOPIC_URL_MASK}`}
             render={tProps => <ThreadsList history={history} {...tProps} />}
           />
           {/* should be upper then ThreadPage! TODO rewrite urls navigation */}
@@ -95,9 +100,7 @@ function TopicsListComponent(props) {
           {/* /> */}
           <Route
             exact
-            path={`${
-              match.path
-            }topics/:topicSlug([A-Za-z0-9_\\-\\.]+)/new-thread`}
+            path={`${path}/topics/:topicSlug([A-Za-z0-9_\\-\\.]+)/new-thread`}
             render={tProps => <NewThreadPage history={history} {...tProps} />}
           />
           {/* <Route */}
@@ -111,7 +114,7 @@ function TopicsListComponent(props) {
             exact
             path={`${
               match.path
-            }:topicSlug([A-Za-z0-9_\\-\\.]+)/:threadId(\\d+)/:threadSlug([A-Za-z0-9_\\-\\.]+)`}
+            }/:topicSlug([A-Za-z0-9_\\-\\.]+)/:threadId(\\d+)/:threadSlug([A-Za-z0-9_\\-\\.]+)`}
             render={tProps => <ThreadPage history={history} {...tProps} />}
           />
           {/* <Route */}
@@ -121,7 +124,7 @@ function TopicsListComponent(props) {
           {/* /> */}
           <Route
             exact
-            path={`${match.path}new-topic`}
+            path={`${match.path}/new-topic`}
             render={tProps => <NewTopicPage history={history} {...tProps} />}
           />
           {/* we assume that parent project has his own 404 page */}

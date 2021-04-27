@@ -14,6 +14,7 @@ import { bindActionCreators, compose } from 'redux'
 import { createStructuredSelector } from 'reselect'
 import ListGroup from 'react-bootstrap/ListGroup'
 
+import { useRouteMatch } from 'react-router-dom'
 import ThreadListItem from '../../components/ThreadListItem'
 import Breadcrumb from '../../components/Breadcrumb'
 
@@ -68,18 +69,28 @@ export function ThreadsList({
   const [hasMoreItems, setHasMoreItems] = useState(false)
   const [nextHref, setNextHref] = useState(null)
 
+  // const match = useRouteMatch()
+
+  const parentUrlPrefix = match.path.split('/topics')[0]
+
+  let baseName = ''
+  if (_history) {
+    baseName = _history.createHref({ pathname: '' }).slice(0, -1)
+  }
+
   const breadcrumbSections = [
     {
       key: 'Topics',
       content: 'Topics',
-      href: '/topics',
+      href: `${baseName}${parentUrlPrefix}/topics`,
       // link: true,
       onClick: evt => {
         evt.preventDefault()
-        history.push('/topics')
+        // inside history do not know about external history basename, so add this
+        history.push(`${baseName}${parentUrlPrefix}/topics`)
         if (_history) {
           // parent app history
-          _history.push({ pathname: `/topics` })
+          _history.push({ pathname: `${parentUrlPrefix}/topics` })
         }
       },
     },
@@ -105,10 +116,14 @@ export function ThreadsList({
   }
 
   const onThreadClick = (e, item) => {
-    history.push(`/${topic.slug}/${item.id}/${item.slug}`)
+    history.push(
+      `${baseName}${parentUrlPrefix}/${topic.slug}/${item.id}/${item.slug}`,
+    )
     if (_history) {
       // parent app history
-      _history.push({ pathname: `/${topic.slug}/${item.id}/${item.slug}` })
+      _history.push({
+        pathname: `${parentUrlPrefix}/${topic.slug}/${item.id}/${item.slug}`,
+      })
     }
   }
 

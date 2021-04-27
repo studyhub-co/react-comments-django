@@ -122,35 +122,45 @@ export function ThreadPage({
 
   const [breadcrumbSections, setBreadcrumbSections] = useState([])
 
+  const parentUrlPrefix = match.path.split('/:topicSlug')[0]
+
   useEffect(() => {
     if (topic) {
       // TODO generate this
+
+      let baseName = ''
+      if (_history) {
+        baseName = _history.createHref({ pathname: '' }).slice(0, -1)
+      }
       setBreadcrumbSections([
         {
           key: 'Topics',
           content: 'Topics',
-          href: '/topics',
+          href: `${baseName}${parentUrlPrefix}/topics`,
           // link: true,
           onClick: evt => {
             evt.preventDefault()
-            history.push('/topics')
+            // inside history do not know about external history basename, so add this
+            history.push(`${baseName}${parentUrlPrefix}/topics`)
             if (_history) {
               // parent app history
-              _history.push({ pathname: `/topics` })
+              _history.push({ pathname: `${parentUrlPrefix}/topics` })
             }
           },
         },
         {
           key: topic.slug,
           content: topic.title,
-          href: `/topics/${topic.slug}`,
+          href: `${baseName}${parentUrlPrefix}/topics/${topic.slug}`,
           // link: true,
           onClick: evt => {
             evt.preventDefault()
-            history.push(`/topics/${topic.slug}`)
+            history.push(`${baseName}${parentUrlPrefix}/topics/${topic.slug}`)
             if (_history) {
               // parent app history
-              _history.push({ pathname: `/topics/${topic.slug}` })
+              _history.push({
+                pathname: `${parentUrlPrefix}/topics/${topic.slug}`,
+              })
             }
           },
         },
