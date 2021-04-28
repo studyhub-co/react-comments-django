@@ -53,7 +53,7 @@ module.exports = require('./webpack.base.babel')({
     // // TODO process js with template engine?
     // // publicPath: '{{STATIC_URL}}{{DJEDDIT_STATIC_FILES_URL_PREFIX}}',
     // publicPath:
-    //   'https://assets.physicsisbeautiful.com/js/npm/@vermus/django-react-djeddit-client/dist/',
+    //   'https://assets.physicsisbeautiful.com/js/npm/@studyhub.co/react-comments-django/dist/',
   },
 
   optimization: {

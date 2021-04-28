@@ -138,8 +138,8 @@ module.exports = require('./webpack.base.babel')({
     }),
 
     new WebpackPwaManifest({
-      name: 'django djeddit react client',
-      short_name: 'React django djeddit',
+      name: 'react-comments-django client',
+      short_name: 'react comments django',
       description: '',
       background_color: '#fafafa',
       theme_color: '#b1624d',

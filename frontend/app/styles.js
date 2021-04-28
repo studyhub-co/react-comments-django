@@ -176,20 +176,20 @@ h6, .text-muted {
 }
 
 @media only screen and (max-width: 500px) {
-  .djeddit-date-silly {
+  .react-comments-django-date-silly {
     display: inline;
   }
 
-  .djeddit-date-verbose {
+  .react-comments-django-date-verbose {
     display: none;
   }
 }
 @media only screen and (min-width: 501px) {
-  .djeddit-date-silly {
+  .react-comments-django-date-silly {
     display: none;
   }
 
-  .djeddit-date-verbose {
+  .react-comments-django-date-verbose {
     display: inline;
   }
 }
@@ -203,23 +203,23 @@ h6, .text-muted {
     display: none;
   }
 
-  .djeddit-thread-item-icon {
+  .react-comments-django-thread-item-icon {
     padding: 5px;
   }
 
-  .djeddit-count-box-overflow {
+  .react-comments-django-count-box-overflow {
     display: none;
   }
 
-  .djeddit-score, .djeddit-score-op {
+  .react-comments-django-score, .react-comments-django-score-op {
     display: none;
   }
 
-  .djeddit-score-large {
+  .react-comments-django-score-large {
     display: flex;
   }
 
-  .djeddit-thread-form > div {
+  .react-comments-django-thread-form > div {
     padding-bottom: 1em;
   }
 
@@ -244,7 +244,7 @@ h6, .text-muted {
     padding: 10px;
   }
 
-  #main .djeddit-topic-description {
+  #main .react-comments-django-topic-description {
     padding: 10px;
   }
 
@@ -252,7 +252,7 @@ h6, .text-muted {
     display: none;
   }
 
-  .djeddit-count-box-overflow {
+  .react-comments-django-count-box-overflow {
     display: inline;
   }
 
@@ -264,11 +264,11 @@ h6, .text-muted {
     width: 100%;
   }
 
-  .djeddit-score, .djeddit-score-op {
+  .react-comments-django-score, .react-comments-django-score-op {
     display: inline;
   }
 
-  .djeddit-score-large {
+  .react-comments-django-score-large {
     display: none !important;
   }
 
@@ -280,16 +280,16 @@ h6, .text-muted {
     padding-left: 15px;
   }
 
-  .djeddit-thread-form {
+  .react-comments-django-thread-form {
     padding-left: 15px;
     padding-right: 15px;
   }
 
-  .djeddit-thread-form > div {
+  .react-comments-django-thread-form > div {
     padding-bottom: 0.5em;
   }
 
-  .djeddit-callout .minicol {
+  .react-comments-django-callout .minicol {
     display: none;
   }
 
@@ -313,41 +313,41 @@ h6, .text-muted {
   }
 }
 /* Medium Devices, Desktops */
-.djeddit-score {
+.react-comments-django-score {
   padding: 2px 5px;
   border-radius: 5px;
   margin-right: 5px;
 }
 
-.djeddit-created-by {
+.react-comments-django-created-by {
   display: inline;
 }
 
-.djeddit-score-upvote, .djeddit-score-downvote {
+.react-comments-django-score-upvote, .react-comments-django-score-downvote {
   margin: 0px 2px;
 }
 
-.djeddit-thread-item-footer, .djeddit-post-item-footer {
+.react-comments-django-thread-item-footer, .react-comments-django-post-item-footer {
   line-height: normal;
 }
 
-.djeddit-score-upvote.color-primary, .djeddit-score-upvote-large.color-primary {
+.react-comments-django-score-upvote.color-primary, .react-comments-django-score-upvote-large.color-primary {
   color: #5cb85c;
 }
 
-.djeddit-score-downvote.color-primary, .djeddit-score-downvote-large.color-primary {
+.react-comments-django-score-downvote.color-primary, .react-comments-django-score-downvote-large.color-primary {
   color: #d9534f;
 }
 
-.djeddit-score-number-large.color-upvote, .djeddit-score-number.color-upvote {
+.react-comments-django-score-number-large.color-upvote, .react-comments-django-score-number.color-upvote {
   color: #5cb85c;
 }
 
-.djeddit-score-number-large.color-downvote, .djeddit-score-number.color-downvote {
+.react-comments-django-score-number-large.color-downvote, .react-comments-django-score-number.color-downvote {
   color: #d9534f;
 }
 
-.djeddit-score-large {
+.react-comments-django-score-large {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -355,12 +355,12 @@ h6, .text-muted {
   width: 100%;
 }
 
-.djeddit-score-large > div {
+.react-comments-django-score-large > div {
   padding: 3px;
   font-family: Museosansrounded, sans-serif;
 }
 
-.djeddit-created-by a, .post-container a {
+.react-comments-django-created-by a, .post-container a {
   color: inherit;
 }
 
@@ -381,19 +381,19 @@ h6, .text-muted {
   padding-left: 0.5em;
 }
 
-.djeddit-score-container {
+.react-comments-django-score-container {
   max-width: 4em;
 }
 
-.djeddit-post-item-footer .djeddit-score {
+.react-comments-django-post-item-footer .react-comments-django-score {
   display: inline;
 }
 
-.djeddit-topic-container {
+.react-comments-django-topic-container {
   max-width: 5em;
 }
 
-.djeddit-topic-description {
+.react-comments-django-topic-description {
   padding-bottom: 0.5em;
 }
 
@@ -402,7 +402,7 @@ h6, .text-muted {
   font-family: "Museosansrounded", sans-serif;
 }
 
-.djeddit-callout {
+.react-comments-django-callout {
   display: flex;
 }
 

@@ -124,7 +124,7 @@ export function ThreadPage({
 
   let parentUrlPrefix = ''
   if (match) {
-    ;[parentUrlPrefix] = [match.path.split('/:topicSlug')]
+    ;[parentUrlPrefix] = match.path.split('/:topicSlug')
   }
 
   useEffect(() => {

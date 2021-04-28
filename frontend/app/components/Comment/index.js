@@ -14,7 +14,6 @@
 //
 // import messages from '../../containers/Thread/messages'
 //
-// // see frontend/django-react-djeddit-client/app_old_structure/components/post.jsx
 //
 // const MarkdownMathRender = props => {
 //   const newProps = {

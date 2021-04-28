@@ -144,7 +144,6 @@ export class RootPost extends React.Component {
                   </Row>
                   <Row>
                     <Col sm={12} md={12}>
-                      {/* djeddit part */}
                       <div className="postcol">
                         <div className="post-content">
                           {/* fix for markdown editor */}
@@ -178,9 +177,9 @@ export class RootPost extends React.Component {
                           {/* <ReactMarkdown source={this.state.content} />, */}
                           {/* )} */}
                         </div>
-                        <div className="djeddit-post-item-footer">
+                        <div className="react-comments-django-post-item-footer">
                           {!this.props.post.deleted_on && (
-                            <div className="djeddit-score">
+                            <div className="react-comments-django-score">
                               <FaArrowUp
                                 onClick={() => this.onVoteClick(1)}
                                 style={{
@@ -190,7 +189,7 @@ export class RootPost extends React.Component {
                                     this.props.post.user_vote === 1 && 'blue',
                                 }}
                               />
-                              <span className=" djeddit-score-number">
+                              <span className=" react-comments-django-score-number">
                                 {this.props.post.score}
                               </span>
                               <FaArrowDown
