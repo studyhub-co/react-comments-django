@@ -1,6 +1,6 @@
 {
   "name": "@studyhub.co/react-comments-django-client",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "react-comments-django client",
   "files": [
     "dist",

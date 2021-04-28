@@ -89,8 +89,9 @@ export function ThreadsList({
         // inside history do not know about external history basename, so add this
         history.push(`${baseName}${parentUrlPrefix}/topics`)
         if (_history) {
-          // parent app history
-          _history.push({ pathname: `${parentUrlPrefix}/topics` })
+          // parent app history, we need to replace internal history page to exclude
+          // internal url from history
+          _history.replace({ pathname: `${parentUrlPrefix}/topics` })
         }
       },
     },
@@ -120,8 +121,9 @@ export function ThreadsList({
       `${baseName}${parentUrlPrefix}/${topic.slug}/${item.id}/${item.slug}`,
     )
     if (_history) {
-      // parent app history
-      _history.push({
+      // parent app history, we need to replace internal history page to exclude
+      // internal url from history
+      _history.replace({
         pathname: `${parentUrlPrefix}/${topic.slug}/${item.id}/${item.slug}`,
       })
     }

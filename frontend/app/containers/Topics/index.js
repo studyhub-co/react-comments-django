@@ -73,13 +73,17 @@ export function TopicsList({
     let baseName = ''
     if (_history) {
       baseName = _history.createHref({ pathname: '' }).slice(0, -1)
+      // inside history do not know about external history basename, so add this
     }
+    console.log(baseName)
+    console.log(match.path)
 
-    // inside history do not know about external history basename, so add this
     history.push(`${baseName}${match.path}/${slug}`)
+    // must be after history.push
     if (_history) {
-      // parent app history
-      _history.push({ pathname: `${match.path}/${slug}` })
+      // parent app history, we need to replace internal history page to exclude
+      // internal url from history
+      _history.replace({ pathname: `${match.path}/${slug}` })
     }
   }
 
