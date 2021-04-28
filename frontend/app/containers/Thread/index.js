@@ -122,7 +122,10 @@ export function ThreadPage({
 
   const [breadcrumbSections, setBreadcrumbSections] = useState([])
 
-  const parentUrlPrefix = match.path.split('/:topicSlug')[0]
+  let parentUrlPrefix = ''
+  if (match) {
+    ;[parentUrlPrefix] = [match.path.split('/:topicSlug')]
+  }
 
   useEffect(() => {
     if (topic) {

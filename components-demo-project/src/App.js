@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
 
-import { connect } from 'react-redux';
 import { Provider } from 'react-redux'
 import { Route, Switch, useRouteMatch } from 'react-router-dom' // react-router v4/v5
 import { ConnectedRouter } from 'connected-react-router'
 import TopicsListComponent from '@studyhub.co/react-comments-django-client/lib/TopicsListComponent'
-// import logo from './logo.svg';
+import ThreadComponent from '@studyhub.co/react-comments-django-client/lib/ThreadComponent'
 import './App.css';
 
 // import { history } from './configureStore'
@@ -14,7 +13,7 @@ import './App.css';
 import configureStore, { history, basename } from './configureStore'
 const store = configureStore()
 
-const _DiscussionIndex = () => {
+const DiscussionIndex = () => {
   return (
       <TopicsListComponent
         anonAsUserObject={Boolean(true)}
@@ -23,18 +22,37 @@ const _DiscussionIndex = () => {
   )
 }
 
-// const DiscussionIndex = connect(
-//   (state) => {
-//     return state;
-//   }
-// )(_DiscussionIndex);
+const ThreadIndex = () => {
+  return (
+          <ThreadComponent
+            anonAsUserObject={Boolean(true)}
+            threadId={1}
+          />
+        )
+}
+
+const MainPage = () => {
+  return (
+    <div style={{'margin': '2%'}}>
+        <button onClick={()=>{history.push('/discussion/')}}>
+          Topics List Component
+        </button>
+        <span style={{ margin: '1%' }}/>
+        <button onClick={()=>{history.push('/thread/')}}>
+          Thread Component
+        </button>
+    </div>
+  )
+}
 
 function App() {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
+        <MainPage />
         <Switch>
-          <Route path={'/discussion'} component={_DiscussionIndex} />
+          <Route path={'/discussion'} component={DiscussionIndex} />
+          <Route path={'/thread'} component={ThreadIndex} />
           {/*<Route*/}
           {/*  path={'/'}*/}
           {/*  render={({ match }) => {*/}
