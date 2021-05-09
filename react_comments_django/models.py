@@ -106,6 +106,7 @@ class Thread(NamedModel):
         return slugify(title)[:180]
 
     def get_absolute_url(self):
+        # url is correct only for root based SPA
         return '/{}/{}/{}'.format(self.topic.slug, self.id, self.slug)
 
     def delete(self, *args, **kwargs):

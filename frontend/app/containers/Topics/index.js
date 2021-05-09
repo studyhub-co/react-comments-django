@@ -33,6 +33,8 @@ import * as loadTopicsActionsCreator from './actions'
 
 import reducer from './reducer'
 import saga from './saga'
+// todo migrate to :
+//  import { useHistory } from 'react-router-dom';
 import history from '../../utils/apphistory'
 
 const key = 'topics'
@@ -75,8 +77,8 @@ export function TopicsList({
       baseName = _history.createHref({ pathname: '' }).slice(0, -1)
       // inside history do not know about external history basename, so add this
     }
-    console.log(baseName)
-    console.log(match.path)
+    // console.log(baseName)
+    // console.log(match.path)
 
     history.push(`${baseName}${match.path}/${slug}`)
     // must be after history.push
