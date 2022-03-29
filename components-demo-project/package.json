@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@studyhub.co/react-comments-django-client": "file:..\\frontend",
+    "@studyhub.co/react-comments-django-client": "file:..\frontend",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -22,7 +22,7 @@
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.21",
     "lodash.isequalwith": "^4.4.0",
-    "minimist": "1.2.5",
+    "minimist": "1.2.6",
     "moment": "^2.22.2",
     "offline-plugin": "5.0.6",
     "prop-types": "15.7.2",
