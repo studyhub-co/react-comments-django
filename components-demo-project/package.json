@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@studyhub.co/react-comments-django-client": "file:..\\frontend",
+    "@studyhub.co/react-comments-django-client": "file:..\frontend",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,7 +11,7 @@
     "compression": "1.7.4",
     "connected-react-router": "^6.9.1",
     "core-js": "^2.6.9",
-    "express": "4.16.4",
+    "express": "4.17.3",
     "fontfaceobserver": "2.1.0",
     "history": "^4.10.1",
     "hoist-non-react-statics": "3.3.0",
